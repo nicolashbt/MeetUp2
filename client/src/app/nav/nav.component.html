@@ -1,18 +1,27 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">MeetUp2</a>
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li *ngIf="loggedIn" class="nav-item">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="loggedIn">
+      <li class="nav-item">
         <a class="nav-link" href="#">Friends</a>
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="#">Lists</a>
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="#">Messages</a>
       </li>
     </ul>
-    <form #loginForn="ngForm" class="d-flex" role="search" (ngSubmit)="login()" autocomplete="off">
+
+    <div class="dropdown" *ngIf="loggedIn" dropdown>
+      <a class="dropdown-toggle text-dark" dropdownToggle>Welcome user</a>
+      <div class="dropdown-menu mt-3" *dropdownMenu>
+        <a class="dropdown-item">Edit Profile</a>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <form *ngIf="!loggedIn" #loginForn="ngForm" class="d-flex" role="search" (ngSubmit)="login()" autocomplete="off">
       <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username">
       <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
         placeholder="Password">
