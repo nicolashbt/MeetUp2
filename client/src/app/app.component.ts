@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { AccountService } from './services/account.service';
@@ -12,10 +11,9 @@ export class AppComponent implements OnInit {
   title = 'The MeetUp2';
   users: any;
 
-  constructor(private http: HttpClient, private accountService: AccountService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -24,10 +22,4 @@ export class AppComponent implements OnInit {
     this.accountService.setCurrentUser(user);
   }
 
-  getUsers() {
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error)
-    });
-  }
 }
