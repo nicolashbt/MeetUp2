@@ -6,19 +6,12 @@
     </div>
 
     <div class="mb-3">
-        <label>Favourite user?</label>
-        <select class="form-control">
-            <option *ngFor="let user of usersFromHomeComponent" [value]="user.userName">{{user.userName}}</option>
-        </select>
-    </div>
-
-    <div class="mb-3">
         <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password">
     </div>
 
     <div class="mb-3 text-center">
         <button class="btn btn-success me-2" type="submit">Register</button>
-        <button (click)="cancel()" class="btn btn-warning me-2" type="button">Cancel</button>
+        <button (click)="cancel()" class="btn btn-warning me-2 text-light" type="button">Cancel</button>
     </div>
 
 </form>
